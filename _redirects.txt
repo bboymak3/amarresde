@@ -1,0 +1,5 @@
+# Forzar que el tráfico de www vaya a la raíz (si conectas dominio propio luego)
+https://www.amarresde.pages.dev/* https://amarresde.pages.dev/:splat 301
+
+# Redirigir cualquier error 404 a la página principal para no perder usuarios
+/* /index.html  404

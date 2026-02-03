@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arcanos Grado 33 | Tarot, Magia y Suerte</title>
+    <title>Arcanos Grado 33 | Tarot y Consultas</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Magia blanca para el amor, amarres efectivos, tarot y numerología. Guía completa de los 78 Arcanos.">
+    <meta name="description" content="Magia blanca para el amor, amarres efectivos, tarot y numerología. Consulta mística diaria.">
     <meta name="keywords" content="magia blanca, amarres de amor, rituales caseros, tarot, numerología, hechizos, horóscopo">
     
     <!-- Fuentes -->
@@ -166,37 +166,23 @@
         }
         .card:hover { border-color: var(--oro); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); transform: translateY(-5px); }
         
-        /* ESPEJO MÁGICO MEJORADO */
+        /* SECCIÓN DEL ORÁCULO (SIMPLIFICADO Y LIMPIO) */
         .contenedor-frame {
             max-width: 700px;
             margin: 40px auto;
             position: relative;
-            padding: 15px; /* Marco más grueso */
-            background: linear-gradient(45deg, #d4af37, #fdfcad, #d4af37, #b8860b);
-            background-size: 400% 400%;
-            border-radius: 30px;
-            animation: gradient-flow 3s ease infinite, glow 3s infinite alternate;
-            box-shadow: 0 0 40px rgba(212, 175, 55, 0.6), inset 0 0 20px rgba(0,0,0,0.8);
-            border: 2px solid #fff;
-        }
-
-        @keyframes gradient-flow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes glow {
-            from { box-shadow: 0 0 20px rgba(212, 175, 55, 0.4), inset 0 0 20px rgba(0,0,0,0.8); }
-            to { box-shadow: 0 0 60px rgba(212, 175, 55, 1), inset 0 0 20px rgba(0,0,0,0.8); }
+            padding: 8px; /* Marco fino y elegante */
+            background: #000;
+            border: 2px solid var(--oro); /* Borde sólido dorado */
+            border-radius: 10px; /* Bordes menos redondeados, más clásicos */
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.15); /* Sombra suave, menos agresiva */
         }
 
         .frame-inner {
-            background: #000;
-            border-radius: 20px;
+            background: #111;
+            border-radius: 6px;
             overflow: hidden;
             height: 700px;
-            border: 2px solid #444; /* Borde interno oscuro para efecto espejo */
             position: relative;
         }
         iframe { width: 100%; height: 100%; border: none; }
@@ -238,7 +224,7 @@
         }
         .close:hover { color: var(--oro); }
 
-        /* ESTILOS GRID CARTAS (Las 78) */
+        /* ESTILOS GRID CARTAS */
         .grid-cartas {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
@@ -452,7 +438,7 @@
             <div class="nav-links">
                 <a href="#tarot-section" class="nav-link">Arcanos</a>
                 <a href="#carta-dia" class="nav-link">Carta del Día</a>
-                <a href="#consultar" class="nav-link">Chat IA</a>
+                <!-- Eliminado Chat IA -->
                 <a href="https://wa.me/5804167775771" target="_blank" class="nav-link" style="color:var(--whatsapp);">WhatsApp</a>
             </div>
         </div>
@@ -468,7 +454,7 @@
     <header>
         <h1>Arcanos Grado 33</h1>
         <p>Expertos en Amarres de Amor, Tarot Evolutivo y Sanación Espiritual.</p>
-        <a href="#consultar" class="btn-oro">Consultar al Médium IA</a>
+        <!-- Eliminado el botón "Consultar al Médium IA" -->
     </header>
 
     <!-- SECCIÓN 2: SERVICIOS -->
@@ -493,15 +479,15 @@
     <!-- SECCIÓN 2.5: CARTA DEL DÍA -->
     <section id="carta-dia" class="seccion-alt" style="text-align: center;">
         <h2>🔮 Tu Carta del Día</h2>
-        <p>Conecta con tu energía diaria. Haz clic en el Espejo del Destino para descubrir qué carta te regala el universo hoy.</p>
-        <a href="#consultar" class="btn-oro" style="font-size: 1rem;">Ver mi Carta del Día</a>
+        <p>Descubre qué energía te regala el universo hoy. Realiza tu consulta a continuación.</p>
+        <a href="#oraculo" class="btn-oro" style="font-size: 1rem;">Ver mi Carta del Día</a>
     </section>
 
-    <!-- SECCIÓN 3: ESPEJO DEL DESTINO + WHATSAPP -->
-    <section id="consultar" style="background: radial-gradient(circle, #1a1a1a 0%, #050505 100%);">
+    <!-- SECCIÓN 3: ORÁCULO DIVINO (ANTES CHAT IA) -->
+    <section id="oraculo" style="background: radial-gradient(circle, #1a1a1a 0%, #050505 100%);">
         <div class="seccion" style="text-align: center;">
-            <h2>🔮 El Espejo del Destino</h2>
-            <p style="max-width: 700px; margin: auto;">Conecta con nuestra inteligencia artificial mística para respuestas inmediatas.</p>
+            <h2>🔮 Oráculo Divino</h2>
+            <p style="max-width: 700px; margin: auto;">Concentra tu mirada y despeja tu mente. El oráculo te dará la respuesta que buscas.</p>
             
             <div class="contenedor-frame">
                 <div class="frame-inner">
@@ -515,7 +501,7 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: LAS 78 CARTAS DEL TAROT (DESCRIPCIONES ACTUALIZADAS) -->
+    <!-- SECCIÓN 4: LAS 78 CARTAS DEL TAROT -->
     <section id="tarot-section" class="seccion">
         <h2>El Tarot Completo (78 Cartas)</h2>
         <p style="text-align: center;">Arcanos Mayores y Arcanos Menores. Haz clic en las cartas para verlas en grande.</p>
@@ -539,24 +525,24 @@
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/16.png" onclick="openModal(this.src)"><b>16 EL DIABLO</b><p>Dependencia, toxicidad, negatividad.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/17.png" onclick="openModal(this.src)"><b>17 LA TORRE</b><p>Destrucción, sorpresa, caos.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/18.png" onclick="openModal(this.src)"><b>18 LA ESTRELLA</b><p>Esperanza, deseos, sanación.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/19.png" onclick="openModal(this.src)"><b>19 LA LUNA</b><p>Confusión, miedo, subconsciente.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/19.png" onclick="openModal(this.src)"><b>19 LA LUNA</b><p>Confusión, miedo, subsconsciente.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/20.png" onclick="openModal(this.src)"><b>20 EL SOL</b><p>Alegría, optimismo, éxito.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/21.png" onclick="openModal(this.src)"><b>21 EL JUICIO</b><p>Epifanía, renacimiento, liberación.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/22.png" onclick="openModal(this.src)"><b>22 EL MUNDO</b><p>Culminación, satisfacción, triunfo.</p></div>
 
             <!-- PALO DE BASTOS -->
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B01.png" onclick="openModal(this.src)"><b>As de Bastos</b><p>Pasión, inspiración, nuevo trabajo o proyecto.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B02.png" onclick="openModal(this.src)"><b>2 de Bastos</b><p>Valorar opciones, expansión, poder.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B03.png" onclick="openModal(this.src)"><b>3 de Bastos</b><p>Planes futuros, esperar, progresar.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B01.png" onclick="openModal(this.src)"><b>As de Bastos</b><p>Energía, pasión, nuevo trabajo o proyecto.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B02.png" onclick="openModal(this.src)"><b>2 de Bastos</b><p>Planificación, expansión, poder.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B03.png" onclick="openModal(this.src)"><b>3 de Bastos</b><p>Expansión, planes futuros y progreso.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B04.png" onclick="openModal(this.src)"><b>4 de Bastos</b><p>Celebración, logro, estabilidad.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B05.png" onclick="openModal(this.src)"><b>5 de Bastos</b><p>Desacuerdos, competición, conflicto.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B06.png" onclick="openModal(this.src)"><b>6 de Bastos</b><p>Éxito, reconocimiento, liderazgo.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B07.png" onclick="openModal(this.src)"><b>7 de Bastos</b><p>Defender, luchar por algo, poner límites.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B05.png" onclick="openModal(this.src)"><b>5 de Bastos</b><p>Conflicto, desacuerdos, competición.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B06.png" onclick="openModal(this.src)"><b>6 de Bastos</b><p>Victoria, éxito, reconocimiento público.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B07.png" onclick="openModal(this.src)"><b>7 de Bastos</b><p>Defensa, luchar por algo, poner límites.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B08.png" onclick="openModal(this.src)"><b>8 de Bastos</b><p>Acción, rapidez, movimiento.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B09.png" onclick="openModal(this.src)"><b>9 de Bastos</b><p>Resiliencia, desgaste, experiencia.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B09.png" onclick="openModal(this.src)"><b>9 de Bastos</b><p>Resistencia, desgaste, experiencia.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B10.png" onclick="openModal(this.src)"><b>10 de Bastos</b><p>Cargas, cansancio, responsabilidades.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B11.png" onclick="openModal(this.src)"><b>Sota de Bastos</b><p>Entusiasta, creativo, propuesta emocionante.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B12.png" onclick="openModal(this.src)"><b>Caballo Bastos</b><p>Apasionado, espontáneo, lanzarse a la aventura.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B12.png" onclick="openModal(this.src)"><b>Caballo de Bastos</b><p>Apasionado, espontáneo, lanzarse a la aventura.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B13.png" onclick="openModal(this.src)"><b>Reina de Bastos</b><p>Carismática, sociable, alta autoestima.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B14.png" onclick="openModal(this.src)"><b>Rey de Bastos</b><p>Emprendedor, inspirador, estar al mando.</p></div>
 
@@ -572,8 +558,8 @@
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C09.png" onclick="openModal(this.src)"><b>9 de Copas</b><p>Satisfacción, abundancia, deseos cumplidos.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C10.png" onclick="openModal(this.src)"><b>10 de Copas</b><p>Felicidad, familia, relaciones armoniosas.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C11.png" onclick="openModal(this.src)"><b>Sota de Copas</b><p>Sensible, soñador, mostrar las emociones.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C12.png" onclick="openModal(this.src)"><b>Caballo Copas</b><p>Estar enamorado, ser romántico, propuesta amorosa.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C13.png" onclick="openModal(this.src)"><b>Reina de Copas</b><p>Comprensivo, amable, sentir emociones.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C12.png" onclick="openModal(this.src)"><b>Caballo de Copas</b><p>Estar enamorado, ser romántico, propuesta amorosa.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C13.png" onclick="openModal(this.src)"><b>Reina de Copas</b><p>Comprensiva, amable, sentir emociones.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C14.png" onclick="openModal(this.src)"><b>Rey de Copas</b><p>Equilibrado, paciente, control emocional.</p></div>
 
             <!-- PALO DE ESPADAS -->
@@ -588,7 +574,7 @@
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E09.png" onclick="openModal(this.src)"><b>9 de Espadas</b><p>Preocupaciones, miedos, ansiedad.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E10.png" onclick="openModal(this.src)"><b>10 de Espadas</b><p>Final doloroso, depresión, tocar fondo.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E11.png" onclick="openModal(this.src)"><b>Sota de Espadas</b><p>Elocuente, curioso, recibir un mensaje.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E12.png" onclick="openModal(this.src)"><b>Caballo Espadas</b><p>Determinación, valentía, perseguir un propósito.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E12.png" onclick="openModal(this.src)"><b>Caballo de Espadas</b><p>Determinación, valentía, perseguir un propósito.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E13.png" onclick="openModal(this.src)"><b>Reina de Espadas</b><p>Asertiva, directa, decir la verdad.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E14.png" onclick="openModal(this.src)"><b>Rey de Espadas</b><p>Racional, inteligente, tener la cabeza fría.</p></div>
 
@@ -604,7 +590,7 @@
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O09.png" onclick="openModal(this.src)"><b>9 de Oros</b><p>Autosuficiencia, independencia, éxito personal.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O10.png" onclick="openModal(this.src)"><b>10 de Oros</b><p>Prosperidad, estabilidad familiar, seguridad económica.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O11.png" onclick="openModal(this.src)"><b>Sota de Oros</b><p>Práctico, estudioso, propuesta financiera.</p></div>
-            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O12.png" onclick="openModal(this.src)"><b>Caballo Oros</b><p>Cauto, tenaz, lealtad.</p></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O12.png" onclick="openModal(this.src)"><b>Caballo de Oros</b><p>Cauto, tenaz, lealtad.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O13.png" onclick="openModal(this.src)"><b>Reina de Oros</b><p>Maternal, generoso, disfrutar de lo material.</p></div>
             <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O14.png" onclick="openModal(this.src)"><b>Rey de Oros</b><p>Maduro, estable, éxito económico.</p></div>
         </div>
@@ -782,7 +768,7 @@
         // DADOS LOGIC
         const dadosUnicode = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
         const numsSuerte = {
-            'Lunes': [2, 7], 'Martes': [1, 9], 'Miercoles': [5, 8], 'Jueves': [3, 12], 'Viernes': [6, 9], 'Sabado': [8, 4], 'Domingo': [1, 4]
+            'Lunes': [2,7], 'Martes': [1,9], 'Miercoles': [5,8], 'Jueves': [3,12], 'Viernes': [6,9], 'Sabado': [8,4], 'Domingo': [1,4]
         };
         const numsSigno = {
             'Aries': 9, 'Tauro': 6, 'Geminis': 5, 'Cancer': 2, 'Leo': 1, 'Virgo': 5,

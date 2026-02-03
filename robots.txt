@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Bloquear solo la URL del chatbot directo para evitar contenido duplicado
+Disallow: /chatbot.html
+
+Sitemap: https://amarresde.pages.dev/sitemap.xml
