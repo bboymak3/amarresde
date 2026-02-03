@@ -6,7 +6,7 @@
     <title>Arcanos Grado 33 | Magia Blanca, Tarot y Suerte</title>
     
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Magia blanca para el amor, amarres efectivos, tarot y numerología. Guía completa de rituales, hechizos caseros y lectura de cartas.">
+    <meta name="description" content="Magia blanca para el amor, amarres efectivos, tarot y numerología. Guía completa de los 78 Arcanos Mayores y Menores.">
     <meta name="keywords" content="magia blanca, amarres de amor, rituales caseros, tarot, numerología, hechizos, lucky numbers, dados de la suerte, horóscopo">
     
     <!-- Fuentes -->
@@ -21,7 +21,6 @@
             --texto: #e0e0e0;
             --whatsapp: #FFD700;
             --whatsapp-hover: #ffea00;
-            --dado: #fff;
         }
 
         * { box-sizing: border-box; }
@@ -145,49 +144,41 @@
         }
         iframe { width: 100%; height: 100%; border: none; }
 
-        /* ESTILOS CARTAS */
+        /* ESTILOS GRID CARTAS (Las 78) */
         .grid-cartas {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 15px;
             margin-top: 30px;
         }
-        .carta-item {
+
+        /* Estilo basado en la guía pero adaptado para verse bien */
+        .carta-card {
             background: #111;
             border: 1px solid #333;
-            border-radius: 8px;
-            overflow: hidden;
+            padding: 10px;
+            border-radius: 5px;
+            text-align: center;
             transition: 0.3s;
-            display: flex;
-            flex-direction: column;
         }
-        .carta-item:hover {
+        .carta-card:hover {
             border-color: var(--oro);
-            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
             transform: translateY(-5px);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
         }
-        .carta-img-container {
+        .carta-card img {
             width: 100%;
-            padding-top: 140%;
-            position: relative;
-            overflow: hidden;
-            background: #000;
-            border-bottom: 2px solid var(--oro);
+            height: auto;
+            border-radius: 3px;
+            border-bottom: 1px solid #333;
+            margin-bottom: 5px;
         }
-        .carta-img-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.5s;
+        .carta-card b {
+            display: block;
+            font-size: 0.8rem;
+            color: var(--oro);
+            font-family: 'Cinzel', serif;
         }
-        .carta-item:hover .carta-img-container img { transform: scale(1.1); }
-        .carta-content { padding: 15px; flex-grow: 1; display: flex; flex-direction: column; }
-        .carta-titulo { font-family: 'Cinzel', serif; color: var(--oro); font-size: 1.1rem; margin-bottom: 8px; }
-        .carta-significado { font-size: 0.85rem; color: #bbb; margin: 0; }
-        .carta-extra { font-size: 0.75rem; color: #777; margin-top: 10px; font-style: italic; border-top: 1px solid #333; padding-top: 5px;}
 
         /* TABLAS */
         .tabla-numero {
@@ -254,7 +245,7 @@
             min-height: 60px;
         }
 
-        /* ACORDEONES (FAQ Y MAGIA) */
+        /* ACORDEONES */
         .faq-item {
             background: #111;
             border: 1px solid #333;
@@ -282,7 +273,7 @@
         .faq-item.active .faq-answer { display: block; }
         .faq-question strong { font-size: 1.1rem; }
 
-        /* MAGIA BLANCA ESPECIAL */
+        /* MAGIA GRID */
         .magic-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -313,29 +304,17 @@
         /* FOOTER */
         footer {
             background: #000;
-            padding: 60px 20px;
+            padding: 40px 20px;
             border-top: 3px solid var(--oro);
             font-size: 0.8rem;
             color: #555;
-        }
-        .keywords-box {
-            font-size: 0.65rem;
-            color: #222;
-            text-align: justify;
-            height: 200px;
-            overflow-y: hidden;
-            line-height: 1.5;
-            opacity: 0.4;
-            margin: 20px 0;
-            column-count: 3;
-            column-gap: 20px;
+            text-align: center;
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
             header h1 { font-size: 2.2rem; }
-            .grid-cartas { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
-            .keywords-box { column-count: 1; }
+            .grid-cartas { grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); }
             .btn-whatsapp-grande { font-size: 1.2rem; padding: 20px; }
             .tabla-numero th, .tabla-numero td { padding: 8px; font-size: 0.85rem; }
         }
@@ -387,140 +366,98 @@
         </div>
     </section>
 
-    <!-- SECCIÓN 4: ARCANOS MAYORES -->
+    <!-- SECCIÓN 4: LAS 78 CARTAS DEL TAROT -->
     <section class="seccion">
-        <h2>Los 22 Arcanos Mayores</h2>
-        <p style="text-align: center;">El camino espiritual del Loco hasta el Mundo.</p>
+        <h2>El Tarot Completo (78 Cartas)</h2>
+        <p style="text-align: center;">Arcanos Mayores y Arcanos Menores.</p>
         <div class="grid-cartas">
-            <!-- Loco = 01.png -->
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/01.png" alt="El Loco"></div>
-                <div class="carta-content"><h3 class="carta-titulo">0. El Loco</h3><p class="carta-significado">Un nuevo comienzo, entusiasmo, tener confianza.</p><p class="carta-extra">"Salta al vacío con fe."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/02.png" alt="El Mago"></div>
-                <div class="carta-content"><h3 class="carta-titulo">1. El Mago</h3><p class="carta-significado">Recursos, habilidades, materializar una idea.</p><p class="carta-extra">"Manifiesta tu voluntad."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/03.png" alt="La Sacerdotisa"></div>
-                <div class="carta-content"><h3 class="carta-titulo">2. La Sacerdotisa</h3><p class="carta-significado">Intuición, sabiduría interna, lo oculto.</p><p class="carta-extra">"Escucha el silencio."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/04.png" alt="La Emperatriz"></div>
-                <div class="carta-content"><h3 class="carta-titulo">3. La Emperatriz</h3><p class="carta-significado">Creación, abundancia, feminidad.</p><p class="carta-extra">"La naturaleza te bendice."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/05.png" alt="El Emperador"></div>
-                <div class="carta-content"><h3 class="carta-titulo">4. El Emperador</h3><p class="carta-significado">Poder, autoridad, masculinidad.</p><p class="carta-extra">"Establece el orden."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/06.png" alt="El Hierofante"></div>
-                <div class="carta-content"><h3 class="carta-titulo">5. El Hierofante</h3><p class="carta-significado">Consejero, tradición, educación.</p><p class="carta-extra">"Aprende de los maestros."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/07.png" alt="Los Enamorados"></div>
-                <div class="carta-content"><h3 class="carta-titulo">6. Los Enamorados</h3><p class="carta-significado">Amor, conexión fuerte, pareja.</p><p class="carta-extra">"Elige con amor."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/08.png" alt="El Carro"></div>
-                <div class="carta-content"><h3 class="carta-titulo">7. El Carro</h3><p class="carta-significado">Avanzar, determinación, autoconfianza.</p><p class="carta-extra">"Vence con determinación."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/09.png" alt="La Fuerza"></div>
-                <div class="carta-content"><h3 class="carta-titulo">8. La Fuerza</h3><p class="carta-significado">Fortaleza, esfuerzo, calma en la adversidad.</p><p class="carta-extra">"Domina con suavidad."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/10.png" alt="El Ermitaño"></div>
-                <div class="carta-content"><h3 class="carta-titulo">9. El Ermitaño</h3><p class="carta-significado">Soledad, introspección, reflexión.</p><p class="carta-extra">"Busca dentro de ti."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/11.png" alt="Rueda Fortuna"></div>
-                <div class="carta-content"><h3 class="carta-titulo">10. Rueda Fortuna</h3><p class="carta-significado">Cambio, destino, suerte.</p><p class="carta-extra">"El destino gira."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/12.png" alt="La Justicia"></div>
-                <div class="carta-content"><h3 class="carta-titulo">11. La Justicia</h3><p class="carta-significado">Imparcialidad, valoración, integridad.</p><p class="carta-extra">"Actúa con verdad."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/13.png" alt="El Colgado"></div>
-                <div class="carta-content"><h3 class="carta-titulo">12. El Colgado</h3><p class="carta-significado">Pausa, sacrificio, cambio de perspectiva.</p><p class="carta-extra">"Mira el mundo al revés."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/14.png" alt="La Muerte"></div>
-                <div class="carta-content"><h3 class="carta-titulo">13. La Muerte</h3><p class="carta-significado">Final, transformación, dolor.</p><p class="carta-extra">"Renace de las cenizas."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/15.png" alt="La Templanza"></div>
-                <div class="carta-content"><h3 class="carta-titulo">14. La Templanza</h3><p class="carta-significado">Equilibrio, calma, moderación.</p><p class="carta-extra">"Encuentra el punto medio."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/16.png" alt="El Diablo"></div>
-                <div class="carta-content"><h3 class="carta-titulo">15. El Diablo</h3><p class="carta-significado">Dependencia, toxicidad, negatividad.</p><p class="carta-extra">"Libérate de tus cadenas."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/17.png" alt="La Torre"></div>
-                <div class="carta-content"><h3 class="carta-titulo">16. La Torre</h3><p class="carta-significado">Destrucción, sorpresa, caos.</p><p class="carta-extra">"Lo que no se sostiene, cae."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/18.png" alt="La Estrella"></div>
-                <div class="carta-content"><h3 class="carta-titulo">17. La Estrella</h3><p class="carta-significado">Esperanza, deseos, sanación.</p><p class="carta-extra">"Confía en el universo."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/19.png" alt="La Luna"></div>
-                <div class="carta-content"><h3 class="carta-titulo">18. La Luna</h3><p class="carta-significado">Confusión, miedo, subsconsciente.</p><p class="carta-extra">"Ilusión y misterio."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/20.png" alt="El Sol"></div>
-                <div class="carta-content"><h3 class="carta-titulo">19. El Sol</h3><p class="carta-significado">Alegría, optimismo, éxito.</p><p class="carta-extra">"Todo sale bien."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/21.png" alt="El Juicio"></div>
-                <div class="carta-content"><h3 class="carta-titulo">20. El Juicio</h3><p class="carta-significado">Epifanía, renacimiento, liberación.</p><p class="carta-extra">"Resucita y avanza."</p></div>
-            </div>
-            <div class="carta-item">
-                <div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/22.png" alt="El Mundo"></div>
-                <div class="carta-content"><h3 class="carta-titulo">21. El Mundo</h3><p class="carta-significado">Culminación, satisfacción, triunfo.</p><p class="carta-extra">"Has llegado a la meta."</p></div>
-            </div>
-        </div>
-    </section>
+            <!-- ARCANAOS MAYORES (Según guía: 01 a 21 y luego 00) -->
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/01.png"><b>01 El Mago</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/02.png"><b>02 La Papisa</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/03.png"><b>03 La Emperatriz</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/04.png"><b>04 El Emperador</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/05.png"><b>05 El Hierofante</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/06.png"><b>06 Los Enamorados</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/07.png"><b>07 El Carro</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/08.png"><b>08 La Justicia</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/09.png"><b>09 El Ermitaño</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/10.png"><b>10 Rueda Fortuna</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/11.png"><b>11 La Fuerza</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/12.png"><b>12 El Colgado</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/13.png"><b>13 La Muerte</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/14.png"><b>14 La Templanza</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/15.png"><b>15 El Diablo</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/16.png"><b>16 La Torre</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/17.png"><b>17 La Estrella</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/18.png"><b>18 La Luna</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/19.png"><b>19 El Sol</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/20.png"><b>20 El Juicio</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/21.png"><b>21 El Mundo</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/00.png"><b>00 El Loco</b></div>
 
-    <!-- ARCANOS MENORES (Bastos, Copas, Espadas, Oros) -->
-    <section class="seccion-alt">
-        <h2>Palo de Bastos (Fuego)</h2>
-        <div class="grid-cartas">
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B01.png"></div><div class="carta-content"><h3 class="carta-titulo">As Bastos</h3><p class="carta-significado">Pasión, inspiración.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B05.png"></div><div class="carta-content"><h3 class="carta-titulo">5 Bastos</h3><p class="carta-significado">Conflicto, competición.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B10.png"></div><div class="carta-content"><h3 class="carta-titulo">10 Bastos</h3><p class="carta-significado">Cargas, cansancio.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B14.png"></div><div class="carta-content"><h3 class="carta-titulo">Rey Bastos</h3><p class="carta-significado">Emprendedor, líder.</p></div></div>
-            <!-- (Podrías agregar las otras cartas de Bastos aquí igual que en el código anterior) -->
-        </div>
-    </section>
-    <!-- NOTA: Por brevedad en la respuesta, he incluido cartas clave de menores. En el código final se deben incluir las 56 cartas como en iteraciones anteriores. Mantengo la estructura para no cortar el código -->
-    
-    <section class="seccion">
-        <h2>Palo de Copas (Agua)</h2>
-        <div class="grid-cartas">
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C01.png"></div><div class="carta-content"><h3 class="carta-titulo">As Copas</h3><p class="carta-significado">Amor, creatividad.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C10.png"></div><div class="carta-content"><h3 class="carta-titulo">10 Copas</h3><p class="carta-significado">Felicidad familiar.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C14.png"></div><div class="carta-content"><h3 class="carta-titulo">Rey Copas</h3><p class="carta-significado">Control emocional.</p></div></div>
-        </div>
-    </section>
+            <!-- PALO DE OROS (14 Cartas) -->
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O01.png"><b>As de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O02.png"><b>02 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O03.png"><b>03 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O04.png"><b>04 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O05.png"><b>05 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O06.png"><b>06 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O07.png"><b>07 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O08.png"><b>08 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O09.png"><b>09 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O10.png"><b>10 de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O11.png"><b>Sota de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O12.png"><b>Caballo de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O13.png"><b>Reina de Oros</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O14.png"><b>Rey de Oros</b></div>
 
-    <section class="seccion-alt">
-        <h2>Palo de Espadas (Aire)</h2>
-        <div class="grid-cartas">
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E01.png"></div><div class="carta-content"><h3 class="carta-titulo">As Espadas</h3><p class="carta-significado">Claridad, ideas.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E10.png"></div><div class="carta-content"><h3 class="carta-titulo">10 Espadas</h3><p class="carta-significado">Final doloroso.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E14.png"></div><div class="carta-content"><h3 class="carta-titulo">Rey Espadas</h3><p class="carta-significado">Inteligencia fría.</p></div></div>
-        </div>
-    </section>
+            <!-- PALO DE COPAS (14 Cartas) -->
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C01.png"><b>As de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C02.png"><b>02 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C03.png"><b>03 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C04.png"><b>04 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C05.png"><b>05 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C06.png"><b>06 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C07.png"><b>07 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C08.png"><b>08 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C09.png"><b>09 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C10.png"><b>10 de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C11.png"><b>Sota de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C12.png"><b>Caballo de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C13.png"><b>Reina de Copas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/C14.png"><b>Rey de Copas</b></div>
 
-    <section class="seccion">
-        <h2>Palo de Oros (Tierra)</h2>
-        <div class="grid-cartas">
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O01.png"></div><div class="carta-content"><h3 class="carta-titulo">As Oros</h3><p class="carta-significado">Oportunidad.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O10.png"></div><div class="carta-content"><h3 class="carta-titulo">10 Oros</h3><p class="carta-significado">Prosperidad.</p></div></div>
-            <div class="carta-item"><div class="carta-img-container"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/O14.png"></div><div class="carta-content"><h3 class="carta-titulo">Rey Oros</h3><p class="carta-significado">Éxito económico.</p></div></div>
+            <!-- PALO DE ESPADAS (14 Cartas) -->
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E01.png"><b>As de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E02.png"><b>02 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E03.png"><b>03 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E04.png"><b>04 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E05.png"><b>05 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E06.png"><b>06 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E07.png"><b>07 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E08.png"><b>08 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E09.png"><b>09 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E10.png"><b>10 de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E11.png"><b>Sota de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E12.png"><b>Caballo de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E13.png"><b>Reina de Espadas</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/E14.png"><b>Rey de Espadas</b></div>
+
+            <!-- PALO DE BASTOS (14 Cartas) -->
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B01.png"><b>As de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B02.png"><b>02 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B03.png"><b>03 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B04.png"><b>04 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B05.png"><b>05 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B06.png"><b>06 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B07.png"><b>07 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B08.png"><b>08 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B09.png"><b>09 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B10.png"><b>10 de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B11.png"><b>Sota de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B12.png"><b>Caballo de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B13.png"><b>Reina de Bastos</b></div>
+            <div class="carta-card"><img src="https://arcanosd1.estilosgrado33.workers.dev/images/B14.png"><b>Rey de Bastos</b></div>
         </div>
     </section>
 
@@ -630,30 +567,10 @@
                 <strong>¿Qué es la Magia Blanca para el Amor?</strong> <span>+</span>
             </div>
             <div class="faq-answer">
-                <p>La magia blanca para el amor es una rama del esoterismo que utiliza energías positivas, elementos naturales y la fuerza de la intención para atraer, fortalecer o recuperar relaciones amorosas. A diferencia de la magia negra, respeta el libre albedrío, no causa daño y busca el bien mayor.</p>
-                <ul>
-                    <li><strong>Respeto al libre albedrío:</strong> Atrae pero no fuerza.</li>
-                    <li><strong>No dañar:</strong> Ningún ritual perjudica a terceros.</li>
-                    <li><strong>Enfoque positivo:</strong> Trabaja con energías de luz.</li>
-                </ul>
+                <p>La magia blanca para el amor es una rama del esoterismo que utiliza energías positivas, elementos naturales y la fuerza de la intención para atraer, fortalecer o recuperar relaciones amorosas.</p>
             </div>
         </div>
 
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Tipos de Magia Blanca</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <div class="magic-grid">
-                    <div class="magic-card"><h4>1. Hechizos de Atracción</h4><p>Para atraer nueva pareja o incrementar magnetismo (velas rojas, cuarzo rosa).</p></div>
-                    <div class="magic-card"><h4>2. Endulzamientos</h4><p>Suavizan carácter y mejoran comunicación (ej: con miel y foto).</p></div>
-                    <div class="magic-card"><h4>3. Retorno de Pareja</h4><p>Para parejas en crisis, sanando heridas y recreando conexión.</p></div>
-                    <div class="magic-card"><h4>4. Protección</h4><p>Escudos energéticos para alejar influencias negativas.</p></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Rituales -->
         <div class="faq-item">
             <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
                 <strong>Ritual: Endulzamiento Rápido con Miel</strong> <span>+</span>
@@ -667,7 +584,6 @@
                     <li>Cierra el frasco atándolo con la cinta roja haciendo 7 nudos.</li>
                     <li>Enciende la vela rosa junto al frasco por 7 minutos diarios durante 7 días.</li>
                 </ol>
-                <p><strong>Efecto esperado:</strong> Suaviza el carácter, mejora la comunicación y crea armonía.</p>
             </div>
         </div>
 
@@ -683,139 +599,19 @@
                     <li>Unge la vela con aceite de lavanda de abajo hacia arriba.</li>
                     <li>Coloca el papel bajo la vela y tu teléfono al lado.</li>
                     <li>Enciende la vela diciendo: "Así como esta llama brilla, brille en tu mente el pensamiento de mí".</li>
-                    <li>Deja consumir la vela completamente y guarda el papel en tu funda del teléfono.</li>
+                    <li>Deja consumir la vela completamente.</li>
                 </ol>
             </div>
         </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Ritual: Retorno con Luna Llena</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <p><em>Elementos:</em> 2 velas rojas, hilo rojo, rosa seca, incienso de sándalo, caja de madera.</p>
-                <p>Ejecución: Durante luna llena, coloca las velas separadas. Átalas con el hilo dejando espacio. Espolvorea pétalos de rosa. Enciende el incienso y las velas. Medita sobre los buenos momentos. Cuando se apaguen, guarda los restos en la caja y entiérrala.</p>
-            </div>
-        </div>
-
-        <!-- Herramientas -->
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Herramientas: Velas y Piedras</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <h4>Velas:</h4>
-                <ul>
-                    <li><strong>Roja:</strong> Pasión intensa, fuerza vital.</li>
-                    <li><strong>Rosa:</strong> Amor romántico, ternura.</li>
-                    <li><strong>Blanca:</strong> Pureza, protección, nuevos comienzos.</li>
-                    <li><strong>Naranja:</strong> Atracción, energía social.</li>
-                </ul>
-                <h4>Piedras:</h4>
-                <ul>
-                    <li><strong>Cuarzo rosa:</strong> Atrae amor universal, sana heridas.</li>
-                    <li><strong>Rodocrosita:</strong> Amor propio y autoestima.</li>
-                    <li><strong>Cornalina:</strong> Pasión y deseo sexual.</li>
-                    <li><strong>Jade:</strong> Amor duradero y fidelidad.</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Elementos Corporales (Ética)</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <p>El uso de elementos personales aumenta la conexión energética:</p>
-                <ul>
-                    <li><strong>Orina:</strong> Mezcla unas gotas con agua de rosas y riega las esquinas de tu casa pidiendo conexión. (Nunca administrar a otros).</li>
-                    <li><strong>Cabello:</strong> Entrelaza un cabello tuyo y uno de la persona, envuélvelos en papel rojo con pétalos de rosa y guárdalo en tu dormitorio.</li>
-                    <li><strong>Ropa Interior:</strong> Lava la prenda con agua de rosas y sal marina, sécala al sol visualizando pasión y guárdala bajo tu colchón.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Situaciones Específicas -->
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Situaciones: Atraer, Gustar y Dominar</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <p><strong>Para atraer al ser amado:</strong> Corta una manzana roja horizontalmente (verás una estrella), coloca una foto pequeña dentro, espolvorea canela, cierra con la otra mitad, átala con hilo rojo y entiérrala en tierra fértil.</p>
-                <p><strong>Para que le gustes a alguien:</strong> Mezcla en aceite base: rosas, jazmín y una gota de tu sudor. Consagra bajo luna llena y úsalo discretamente cerca de esa persona.</p>
-                <p><strong>Dominio suave (Endulzamiento):</strong> Escribe tu petición en hoja de laurel con miel, dóblala hacia ti, colócala bajo tu almohada 3 noches. Luego quémala y esparce cenizas donde camine la persona.</p>
-            </div>
-        </div>
-
-        <!-- Protección y Tiempos -->
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Tiempos y Protección</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <h4>Tiempos:</h4>
-                <ul>
-                    <li><strong>24 Horas:</strong> Rituales de emergencia con fuego rápido y visualización intensa.</li>
-                    <li><strong>Amarres Eternos:</strong> Construcción gradual, reforzamiento en cada luna creciente y renovación anual.</li>
-                </ul>
-                <h4>Protección:</h4>
-                <ul>
-                    <li><strong>Saber si te hicieron brujería:</strong> Pesadillas, obsesión mental, malestar físico cerca de ciertos objetos.</li>
-                    <li><strong>Desamarre:</strong> Baño con sal gruesa y ruda, quema de objetos unidores, oración a San Miguel.</li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- FAQ Magia Blanca -->
-        <div class="faq-item">
-            <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                <strong>Preguntas Frecuentes sobre Magia Blanca</strong> <span>+</span>
-            </div>
-            <div class="faq-answer">
-                <p><strong>¿Funcionan?</strong> Sí, con intención pura, alineación con el bien mayor y complementando con acción real.</p>
-                <p><strong>¿Tiene Karma?</strong> Toda acción tiene consecuencia, pero la magia blanca minimiza el karma negativo al trabajar con ética.</p>
-                <p><strong>¿Cuánto cuesta?</strong> Varía. Desde $50 consultas hasta $500 trabajos complejos. ¡Cuidado con estafas de pagos gigantes por adelantado!</p>
-                <p><strong>Consejo final:</strong> Clarifica tu intención, respeta el libre albedrío, comienza con auto-amor y combina la magia con la acción.</p>
-            </div>
-        </div>
     </section>
 
-    <!-- SECCIÓN 9: FAQ GENERAL (ANTIGUA) -->
-    <section class="seccion-alt">
-        <h2>Dudas Generales</h2>
-        <div style="max-width: 800px; margin: auto;">
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                    ¿Son efectivos los amarres de amor?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Los amarres de amor son rituales que funcionan mediante la manipulación energética. Su efectividad depende de la fe y la limpieza energética previa.</p>
-                </div>
-            </div>
-            <div class="faq-item">
-                <div class="faq-question" onclick="this.parentElement.classList.toggle('active')">
-                    ¿Cómo interpretar la carta del día?
-                    <span>+</span>
-                </div>
-                <div class="faq-answer">
-                    <p>Úsala como consejo. Bastos = acción, Espadas = cuidado con discusiones, Oros = finanzas, Copas = emociones.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- FOOTER -->
+    <!-- FOOTER (LISTA DE PALABRAS ELIMINADA) -->
     <footer>
         <div class="seccion" style="padding: 0;">
             <h3>Arcanos Grado 33</h3>
             <p style="text-align: center; color: #777;">La guía espiritual definitiva para el amor y la fortuna.</p>
             
-            <div class="keywords-box">
-                amarres cartas lectura de cartas magia blanca cartas de hoy lectura del dia amarres de amor amarre de amor alicia collado amarres de amor efectivos evangelio de hoy hechizos de amor paloma lafuente amarres de amor caseros amarres efectivos amarres de pareja amarres de amor gratis amarres amorosos alicia collado precios amarres para el amor los amarres de amor funcionan endulzamientos lecturas de hoy amarres de amor con orina amarres gratis sin pagar nada amarre amor amarres de amor caseros y efectivos amarres caseros amarres gratis endulzamiento de amor el evangelio de hoy palabra de dios para hoy amarres poderosos amarres de amor en horas carta de renuncia retorno de pareja carta de renuncia voluntaria amarres para parejas reflexión del evangelio de hoy brujeria de amor hechizos para enamorar a un hombre padre carlos yepes evangelio de hoy endulzamiento efectivo los amarres funcionan amarre con orina amarre con ropa interior brujeria blanca amarres fuertes amarres para hombres evangelio de hoy domingo endulzamiento con miel amarres gratis por whatsapp conjuros de amor evangelio del día de hoy endulzamientos de amor amarres y endulzamientos amarres de amor magia blanca amarre con foto brujeria amarres trabajos de amarre amarres de amor poderosos hechizos para el amor amarres magia blanca brujos amarres amarres y hechizos amarres eternos amarres magia negra amarres reales lecturas del dia de hoy amarres faciles brujos para amarres amarres espirituales hechizo de amarre amarres de amor baratos un amarre de amor brujeria para el amor evangelio del día amarres de amor magia negra amarres para enamorar amarre a un hombre un amarre amarres de amor fuertes amarres con menstruacion amarres de amor consulta gratis amarres de amor estados unidos lectura del evangelio de hoy amarres de amor eterno endulzamiento rapido y efectivo amarres para una mujer lecturas del día de hoy amarre brujeria amarres de sexo magia blanca para que piense en mi y me llame palabra de dios hoy existen los amarres de amor palabra de hoy amarre del espejo amarres para mi pareja amarres para tu pareja amarres de amor cerca de mi los mejores amarres de amor magia blanca para que mi ex vuelva conmigo amarres pareja brujeria amarre amarres en 24 horas existen los amarres lecturas de la misa de hoy hechizo para separar una pareja magia blanca con arcángeles brujos efectivos liturgia de hoy hechizo de endulzamiento ritual de amarre alicia collado amarres amarres garantizados la palabra de hoy amarres de amor garantizados brujeria para enamorar amarres de amor reales amarres y endulzamiento endulzamiento de pareja magia blanca para el amor lectura biblica de hoy amarres para mi ex amarres de magia blanca amarres vudu amarres de amor usa amarres en linea amarres para mi novio amarre a una persona amarre para tener sexo hechizo para enamorar a una mujer amarres de amor quito amarres de brujeria amarres para personas amarre eterno amarres de magia negra amarre con cabello lecturas de hoy domingo son efectivos los amarres de amor amarres de amarre a una mujer evangelio hoy magia blanca para que me desee solo a mi hechizos para enamorar amarres de amor funcionan amarres de amor en 24 horas alicia collado vidente primera lectura de hoy amarres para una persona brujeria amor amarres de amor paga al ver resultados amarres rapidos amarres gay amarres de amor alicia collado palabra del dia de hoy amarres para sexo amarres alicia collado amarre con miel magia blanca amor mejores amarres de amor los amarres son efectivos trabajos de endulzamiento sirven los amarres magia blanca para que me llame regreso del ser amado hechizos amor magia blanca gratis evangelio del domingo alicia collado contacto ciudad redonda evangelio de hoy amarres consulta gratis brujeria para amor consultas de amarres amarres gratis sin pagar hechizos de amor gratis el mejor amarre de amor amarres con la santa muerte amarre de amor con foto carta de agradecimiento carta de renuncia voluntaria gratis amarres y hechizos de amor el evangelio del dia amarres para tu ex hechizos de magia blanca amarres de personas endulzamientos gratis amarres del mismo sexo amarres verdaderos amarres sencillos trabajos de amarres de amor amarres de amor gay ritual para enamorar hechizo con santería yoruba amarres pactados endulzamiento para pareja amarre con sangre cita biblica de hoy rituales de magia blanca santo evangelio de hoy endulzamientos efectividad amarres y dominios dominicos evangelio de hoy abre caminos ritual los mejores amarres amarres seguros endulzamiento casero el mejor amarre amarres de amor rapidos amarres de amor en new york alicia collado web amarres y limpias alicia collado fotos amarres para tu crush brujos llaneros amarre de utero magia negra para el amor hechizos de amor efectivos alicia collado whatsapp magia negra amor amarres paga todo al final brujeria magia negra ritual para atraer a una persona alicia collado amarres de amor amarre a mi pareja endulzamiento pareja amarres potentes amarres paga al ver resultados amarre a mi ex paloma lafuente amarres amarre online amarres y retornos amarres en casa amarre de endulzamiento amarres llaneros consulta gratis brujos mejores amarres reflexión de la palabra de hoy amarre de hombre carta renuncia voluntaria amarres de amor en casa endulzamiento para mi pareja comentario del evangelio de hoy alicia collado teléfono conjuros para el amor amarre con calzon sirven los amarres de amor consultas gratis de brujos amarres para enamorar a alguien alicia collado precios 2021 son reales los amarres de amor amarre a tu pareja hechizos para atraer a un hombre texto biblico de hoy consulta gratis brujo amarres a distancia amarres de amor faciles amarres funcionan los amarres si funcionan hechizos de amor caseros brujos de magia blanca trabajos de magia blanca amarres para novios mariela gauna vidente amarres whatsapp magia para enamorar amarres de amor brujeria amarres blancos amarres caseros efectivos paloma lafuente web amarres de dominio trabajo de dominio y endulzamiento magia negra para el amor hechizos de amor efectivos
-            </div>
-            
-            <p style="margin-top: 30px; border-top: 1px solid #222; padding-top: 20px; color: #aaa;">
+            <p style="margin-top: 30px; border-top:1px solid #222; padding-top:20px; color: #aaa;">
                 © 2026 Arcanos Grado 33. Términos: Los resultados espirituales dependen de la fe y la energía del consultante.
             </p>
         </div>
@@ -825,13 +621,7 @@
     <script>
         const dadosUnicode = ['⚀', '⚁', '⚂', '⚃', '⚄', '⚅'];
         const numsSuerte = {
-            'Lunes': [2, 7],
-            'Martes': [1, 9],
-            'Miercoles': [5, 8],
-            'Jueves': [3, 12],
-            'Viernes': [6, 9],
-            'Sabado': [8, 4],
-            'Domingo': [1, 4]
+            'Lunes': [2,7], 'Martes': [1,9], 'Miercoles': [5,8], 'Jueves': [3,12], 'Viernes': [6,9], 'Sabado': [8,4], 'Domingo': [1,4]
         };
         const numsSigno = {
             'Aries': 9, 'Tauro': 6, 'Geminis': 5, 'Cancer': 2, 'Leo': 1, 'Virgo': 5,
@@ -842,24 +632,16 @@
             const dia = document.getElementById('selectDia').value;
             const resultDiv = document.getElementById('diceResultDia');
             const textDiv = document.getElementById('textResultDia');
-
-            if (!dia) {
-                alert("Por favor, selecciona un día primero.");
-                return;
-            }
-
-            // Animación simple
-            let count = 0;
+            if (!dia) return;
+            let count=0;
             const interval = setInterval(() => {
                 resultDiv.innerText = dadosUnicode[Math.floor(Math.random() * 6)];
                 count++;
-                if (count > 10) {
+                if(count > 10) {
                     clearInterval(interval);
-                    // Resultado Final
                     const numSuerte = numsSuerte[dia][Math.floor(Math.random() * 2)];
-                    const dadoFinal = numSuerte > 6 ? dadosUnicode[5] : dadosUnicode[numSuerte - 1]; // Simplificación visual
-                    resultDiv.innerText = dadoFinal;
-                    textDiv.innerHTML = `🌟 Para el día <strong>${dia}</strong>, tu número de la suerte es el <strong style="color:var(--oro)">${numSuerte}</strong>.`;
+                    resultDiv.innerText = dadosUnicode[5]; 
+                    textDiv.innerHTML = `🌟 Para el día <strong>${dia}</strong>, tu número es el <strong style="color:var(--oro)">${numSuerte}</strong>.`;
                 }
             }, 100);
         }
@@ -868,26 +650,38 @@
             const signo = document.getElementById('selectSigno').value;
             const resultDiv = document.getElementById('diceResultSigno');
             const textDiv = document.getElementById('textResultSigno');
-
-            if (!signo) {
-                alert("Por favor, selecciona tu signo primero.");
-                return;
-            }
-
-            // Animación
-            let count = 0;
+            if (!signo) return;
+            let count=0;
             const interval = setInterval(() => {
                 resultDiv.innerText = dadosUnicode[Math.floor(Math.random() * 6)];
                 count++;
-                if (count > 10) {
+                if(count > 10) {
                     clearInterval(interval);
                     const numSuerte = numsSigno[signo];
-                    resultDiv.innerText = dadosUnicode[5]; // Visual de dados ganador
-                    textDiv.innerHTML = `🔮 Para <strong>${signo}</strong>, los dados dictan: ¡El número <strong style="color:var(--oro)">${numSuerte}</strong> te guía hacia el éxito!`;
+                    resultDiv.innerText = dadosUnicode[5]; 
+                    textDiv.innerHTML = `🔮 Para <strong>${signo}</strong>, los dados dictan: ¡El número <strong style="color:var(--oro)">${numSuerte}</strong> te guía!`;
                 }
             }, 100);
         }
-    </script>
+    
+
+
+
+
+<!-- En tu web principal, donde quieras el juego: -->
+<div class="contenedor-juego">
+    <iframe 
+        src="ruta/a/tu/juego-amor.html" 
+        width="100%" 
+        height="650"
+        style="border: 2px solid #FFD700; border-radius: 10px;"
+        title="Juego Captura el Amor Mágico"
+        scrolling="no"
+        frameborder="0"
+    >
+        Tu navegador no soporta iframes. <a href="ruta/a/tu/juego-amor.html">Ver juego</a>
+    </iframe>
+</div>
 
 
 
@@ -896,11 +690,6 @@
 
 
 
-
-
-
-
-
-
+</script>
 </body>
 </html>
