@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego Captura el Amor Mágico</title>
+    <style>
+        /* RESET COMPLETO PARA EVITAR INTERFERENCIAS */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+        
+        body {
+            background: #000000;
+            color: #FFD700;
+            width: 100%;
+            min-height: 100vh;
+            overflow: hidden;
+        }
+        
+        /* CONTENEDOR PRINCIPAL DEL JUEGO */
+        .juego-container {
+            width: 100%;
+            height: 100vh;
+            padding: 15px;
+            background: #000000;
+        }
+        
+        /* CABECERA DEL JUEGO */
+        .juego-header {
+            text-align: center;
+            padding: 15px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+        }
+        
+        .juego-titulo {
+            font-size: 28px;
+            background: linear-gradient(45deg, #FFD700, #FFA500);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 8px;
+        }
+        
+        .juego-subtitulo {
+            color: #CCCCCC;
+            font-size: 14px;
+        }
+        
+        /* PANEL DE ESTADÍSTICAS */
+        .stats-panel {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+        
+        .stat-box {
+            background: #1a1a1a;
+            border: 1px solid #FFD700;
+            border-radius: 8px;
+            padding: 12px;
+            text-align: center;
+        }
+        
+        .stat-label {
+            color: #CCCCCC;
+            font-size: 12px;
+            margin-bottom: 5px;
+        }
+        
+        .stat-value {
+            color: #FFD700;
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        /* ÁREA DEL JUEGO */
+        .game-area {
+            width: 100%;
+            height: 400px;
+            background: #0a0a0a;
+            border: 2px solid #FFD700;
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 15px;
+        }
+        
+        .magic-object {
+            position: absolute;
+            cursor: pointer;
+            transition: transform 0.2s;
+            z-index: 10;
+            border-radius: 50%;
+            box-shadow: 0 0 15px currentColor;
+        }
+        
+        .magic-object:hover {
+            transform: scale(1.1);
+        }
+        
+        /* OBJETOS MÁGICOS CON COLORES ORO/NEGRO */
+        .cristal-rosa { background: radial-gradient(circle, #FFD700, #B8860B); color: #FFD700; }
+        .vela-pasion { background: radial-gradient(circle, #FF8C00, #8B4513); color: #FF8C00; }
+        .tarot-card { background: radial-gradient(circle, #DAA520, #8B6914); color: #DAA520; }
+        .libro-hechizos { background: radial-gradient(circle, #FFD700, #8B7500); color: #FFD700; }
+        .amuleto-amor { background: radial-gradient(circle, #FFA500, #8B5A00); color: #FFA500; }
+        .karma-negativo { background: radial-gradient(circle, #333333, #000000); color: #666666; }
+        
+        /* CONTROLES */
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .control-btn {
+            padding: 12px 25px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-start {
+            background: linear-gradient(45deg, #FFD700, #B8860B);
+            color: #000000;
+        }
+        
+        .btn-reset {
+            background: linear-gradient(45deg, #333333, #666666);
+            color: #FFD700;
+        }
+        
+        .control-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 215, 0, 0.4);
+        }
+        
+        /* INSTRUCCIONES */
+        .instrucciones {
+            background: #1a1a1a;
+            border: 1px solid #FFD700;
+            border-radius: 8px;
+            padding: 15px;
+            font-size: 12px;
+        }
+        
+        .instrucciones h3 {
+            color: #FFD700;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+        
+        .instrucciones ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 8px;
+        }
+        
+        .instrucciones li {
+            padding: 5px 0;
+            color: #CCCCCC;
+            display: flex;
+            align-items: center;
+        }
+        
+        .instrucciones li:before {
+            content: "✦";
+            color: #FFD700;
+            margin-right: 8px;
+        }
+        
+        /* EFECTOS VISUALES */
+        .particle {
+            position: absolute;
+            pointer-events: none;
+            z-index: 5;
+            font-size: 20px;
+            animation: float 1s ease-out forwards;
+        }
+        
+        @keyframes float {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-100px) scale(0); opacity: 0; }
+        }
+        
+        /* POPUPS */
+        .popup {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: #1a1a1a;
+            border: 3px solid #FFD700;
+            border-radius: 10px;
+            padding: 30px;
+            text-align: center;
+            z-index: 100;
+            display: none;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.5);
+        }
+        
+        .popup h2 {
+            color: #FFD700;
+            margin-bottom: 15px;
+        }
+        
+        .final-score {
+            font-size: 40px;
+            color: #FFD700;
+            margin: 15px 0;
+            font-weight: bold;
+        }
+        
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .juego-titulo { font-size: 22px; }
+            .game-area { height: 350px; }
+            .stat-value { font-size: 20px; }
+            .controls { flex-direction: column; align-items: center; }
+            .control-btn { width: 200px; }
+        }
+        
+        @media (max-width: 480px) {
+            .juego-container { padding: 10px; }
+            .game-area { height: 300px; }
+            .stats-panel { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="juego-container">
+        <!-- CABECERA -->
+        <div class="juego-header">
+            <h1 class="juego-titulo">✨ CAPTURA EL AMOR MÁGICO ✨</h1>
+            <p class="juego-subtitulo">Atrapa los elementos mágicos antes de que desaparezcan</p>
+        </div>
+        
+        <!-- ESTADÍSTICAS -->
+        <div class="stats-panel">
+            <div class="stat-box">
+                <div class="stat-label">PUNTUACIÓN</div>
+                <div class="stat-value" id="score">0</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">TIEMPO</div>
+                <div class="stat-value" id="time">60</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-label">NIVEL</div>
+                <div class="stat-value" id="level">1</div>
+            </div>
+        </div>
+        
+        <!-- ÁREA DE JUEGO -->
+        <div class="game-area" id="gameArea">
+            <!-- Los objetos aparecerán aquí -->
+        </div>
+        
+        <!-- CONTROLES -->
+        <div class="controls">
+            <button class="control-btn btn-start" id="startBtn">🎮 COMENZAR</button>
+            <button class="control-btn btn-reset" id="resetBtn">🔄 REINICIAR</button>
+        </div>
+        
+        <!-- INSTRUCCIONES -->
+        <div class="instrucciones">
+            <h3>📜 CÓMO JUGAR:</h3>
+            <ul>
+                <li>Haz clic en los objetos mágicos para capturarlos</li>
+                <li>Cada objeto da puntos diferentes</li>
+                <li>Evita los objetos de karma negativo</li>
+                <li>Tienes 60 segundos para conseguir la mayor puntuación</li>
+                <li>Sube de nivel cada 200 puntos</li>
+            </ul>
+        </div>
+    </div>
+    
+    <!-- POPUP GAME OVER -->
+    <div class="popup" id="gameOverPopup">
+        <h2>🎮 JUEGO TERMINADO</h2>
+        <p>Tu puntuación final:</p>
+        <div class="final-score" id="finalScore">0</div>
+        <p id="mensajeFinal"></p>
+        <button class="control-btn btn-start" onclick="reiniciarJuego()" style="margin-top: 15px;">JUGAR DE NUEVO</button>
+    </div>
+    
+    <!-- POPUP NIVEL SUPERADO -->
+    <div class="popup" id="levelUpPopup" style="display: none;">
+        <h2>🎉 ¡NIVEL SUPERADO!</h2>
+        <p>Has alcanzado el nivel <span id="nuevoNivel">2</span></p>
+        <p>Nuevos objetos mágicos desbloqueados</p>
+        <button class="control-btn btn-start" onclick="cerrarPopupNivel()">CONTINUAR</button>
+    </div>
+
+    <script>
+        // VARIABLES DEL JUEGO
+        let puntuacion = 0;
+        let tiempo = 60;
+        let nivel = 1;
+        let juegoActivo = false;
+        let intervaloJuego;
+        let intervaloTiempo;
+        let objetosEnPantalla = 0;
+        let maxObjetos = 5;
+        
+        // ELEMENTOS DOM
+        const gameArea = document.getElementById('gameArea');
+        const scoreElement = document.getElementById('score');
+        const timeElement = document.getElementById('time');
+        const levelElement = document.getElementById('level');
+        const startBtn = document.getElementById('startBtn');
+        const resetBtn = document.getElementById('resetBtn');
+        const gameOverPopup = document.getElementById('gameOverPopup');
+        const levelUpPopup = document.getElementById('levelUpPopup');
+        const finalScoreElement = document.getElementById('finalScore');
+        const mensajeFinal = document.getElementById('mensajeFinal');
+        const nuevoNivelElement = document.getElementById('nuevoNivel');
+        
+        // OBJETOS MÁGICOS
+        const objetosMagicos = [
+            { clase: "cristal-rosa", puntos: 10, tamaño: 60, duracion: 2000, nombre: "Cristal Rosa" },
+            { clase: "vela-pasion", puntos: 15, tamaño: 55, duracion: 1800, nombre: "Vela de Pasión" },
+            { clase: "tarot-card", puntos: 20, tamaño: 65, duracion: 1500, nombre: "Carta del Tarot" },
+            { clase: "libro-hechizos", puntos: 25, tamaño: 70, duracion: 1200, nombre: "Libro de Hechizos" },
+            { clase: "amuleto-amor", puntos: 30, tamaño: 75, duracion: 1000, nombre: "Amuleto de Amor" }
+        ];
+        
+        // OBJETOS NEGATIVOS
+        const objetosNegativos = [
+            { clase: "karma-negativo", puntos: -20, tamaño: 50, duracion: 2500, nombre: "Karma Negativo" }
+        ];
+        
+        // MENSAJES FINALES
+        const mensajes = [
+            { min: 0, max: 100, msg: "Necesitas practicar más la magia del amor" },
+            { min: 101, max: 300, msg: "Tu energía amorosa está creciendo" },
+            { min: 301, max: 600, msg: "¡Eres un aprendiz avanzado de amarres!" },
+            { min: 601, max: 1000, msg: "Maestro de la magia blanca amorosa" },
+            { min: 1001, max: 9999, msg: "¡GRAN MAESTRO DE LOS AMARRES DE AMOR!" }
+        ];
+        
+        // INICIALIZAR JUEGO
+        function inicializarJuego() {
+            puntuacion = 0;
+            tiempo = 60;
+            nivel = 1;
+            juegoActivo = false;
+            objetosEnPantalla = 0;
+            maxObjetos = 5;
+            
+            actualizarUI();
+            limpiarAreaJuego();
+            gameOverPopup.style.display = 'none';
+            levelUpPopup.style.display = 'none';
+            
+            startBtn.textContent = "🎮 COMENZAR";
+            startBtn.disabled = false;
+        }
+        
+        // COMENZAR JUEGO
+        function comenzarJuego() {
+            if (juegoActivo) return;
+            
+            juegoActivo = true;
+            startBtn.textContent = "⏸️ EN CURSO";
+            startBtn.disabled = true;
+            
+            // Generar objetos periódicamente
+            intervaloJuego = setInterval(generarObjetoMagico, 800);
+            
+            // Controlar tiempo
+            intervaloTiempo = setInterval(actualizarTiempo, 1000);
+            
+            // Generar primeros objetos
+            for (let i = 0; i < 3; i++) {
+                setTimeout(() => generarObjetoMagico(), i * 500);
+            }
+        }
+        
+        // GENERAR OBJETO MÁGICO
+        function generarObjetoMagico() {
+            if (!juegoActivo || objetosEnPantalla >= maxObjetos) return;
+            
+            const anchoArea = gameArea.clientWidth;
+            const altoArea = gameArea.clientHeight;
+            
+            // Decidir si es objeto positivo o negativo
+            const esNegativo = Math.random() < 0.15;
+            const pool = esNegativo ? objetosNegativos : objetosMagicos;
+            const objeto = pool[Math.floor(Math.random() * pool.length)];
+            
+            // Crear elemento
+            const elemento = document.createElement('div');
+            elemento.className = `magic-object ${objeto.clase}`;
+            elemento.style.width = `${objeto.tamaño}px`;
+            elemento.style.height = `${objeto.tamaño}px`;
+            
+            // Posición aleatoria
+            const posX = Math.random() * (anchoArea - objeto.tamaño);
+            const posY = Math.random() * (altoArea - objeto.tamaño);
+            elemento.style.left = `${posX}px`;
+            elemento.style.top = `${posY}px`;
+            
+            // Tooltip
+            elemento.title = `${objeto.nombre} (${objeto.puntos > 0 ? '+' : ''}${objeto.puntos} puntos)`;
+            
+            // Evento click
+            elemento.addEventListener('click', () => {
+                if (!juegoActivo) return;
+                
+                // Sumar puntos
+                sumarPuntos(objeto.puntos);
+                
+                // Efecto visual
+                crearParticula(posX + objeto.tamaño/2, posY + objeto.tamaño/2, objeto.puntos);
+                
+                // Eliminar objeto
+                elemento.remove();
+                objetosEnPantalla--;
+                
+                // Verificar nivel
+                verificarNivel();
+            });
+            
+            // Añadir al área
+            gameArea.appendChild(elemento);
+            objetosEnPantalla++;
+            
+            // Eliminar automáticamente
+            setTimeout(() => {
+                if (elemento.parentNode) {
+                    elemento.remove();
+                    objetosEnPantalla--;
+                }
+            }, objeto.duracion);
+        }
+        
+        // CREAR PARTÍCULA DE EFECTO
+        function crearParticula(x, y, puntos) {
+            const particula = document.createElement('div');
+            particula.className = 'particle';
+            particula.textContent = puntos > 0 ? '💛' : '💔';
+            particula.style.left = `${x}px`;
+            particula.style.top = `${y}px`;
+            
+            gameArea.appendChild(particula);
+            
+            setTimeout(() => {
+                particula.remove();
+            }, 1000);
+        }
+        
+        // SUMAR PUNTOS
+        function sumarPuntos(puntos) {
+            puntuacion += puntos;
+            if (puntuacion < 0) puntuacion = 0;
+            scoreElement.textContent = puntuacion;
+        }
+        
+        // ACTUALIZAR TIEMPO
+        function actualizarTiempo() {
+            tiempo--;
+            timeElement.textContent = tiempo;
+            
+            if (tiempo <= 0) {
+                terminarJuego();
+            }
+            
+            // Aumentar dificultad
+            if (tiempo % 15 === 0 && tiempo < 60 && juegoActivo) {
+                aumentarDificultad();
+            }
+        }
+        
+        // AUMENTAR DIFICULTAD
+        function aumentarDificultad() {
+            nivel++;
+            maxObjetos = Math.min(10, 5 + nivel);
+            levelElement.textContent = nivel;
+            
+            // Más objetos por segundo
+            clearInterval(intervaloJuego);
+            const nuevoIntervalo = Math.max(400, 800 - (nivel * 40));
+            intervaloJuego = setInterval(generarObjetoMagico, nuevoIntervalo);
+        }
+        
+        // VERIFICAR NIVEL
+        function verificarNivel() {
+            if (puntuacion >= nivel * 200) {
+                mostrarPopupNivel();
+            }
+        }
+        
+        // MOSTRAR POPUP NIVEL
+        function mostrarPopupNivel() {
+            nuevoNivelElement.textContent = nivel + 1;
+            levelUpPopup.style.display = 'block';
+            setTimeout(cerrarPopupNivel, 2000);
+        }
+        
+        function cerrarPopupNivel() {
+            levelUpPopup.style.display = 'none';
+        }
+        
+        // TERMINAR JUEGO
+        function terminarJuego() {
+            juegoActivo = false;
+            clearInterval(intervaloJuego);
+            clearInterval(intervaloTiempo);
+            
+            // Mostrar mensaje según puntuación
+            const mensaje = mensajes.find(m => puntuacion >= m.min && puntuacion <= m.max);
+            mensajeFinal.textContent = mensaje ? mensaje.msg : "¡Excelente trabajo!";
+            
+            finalScoreElement.textContent = puntuacion;
+            gameOverPopup.style.display = 'block';
+        }
+        
+        // REINICIAR JUEGO
+        function reiniciarJuego() {
+            gameOverPopup.style.display = 'none';
+            inicializarJuego();
+            comenzarJuego();
+        }
+        
+        // ACTUALIZAR INTERFAZ
+        function actualizarUI() {
+            scoreElement.textContent = puntuacion;
+            timeElement.textContent = tiempo;
+            levelElement.textContent = nivel;
+        }
+        
+        // LIMPIAR ÁREA DE JUEGO
+        function limpiarAreaJuego() {
+            gameArea.innerHTML = '';
+        }
+        
+        // EVENT LISTENERS
+        startBtn.addEventListener('click', comenzarJuego);
+        resetBtn.addEventListener('click', inicializarJuego);
+        
+        // INICIALIZAR AL CARGAR
+        window.addEventListener('DOMContentLoaded', inicializarJuego);
+        
+        // EVENTO TECLADO (ESPACIO PARA PAUSA)
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                e.preventDefault();
+                if (juegoActivo) {
+                    juegoActivo = false;
+                    clearInterval(intervaloJuego);
+                    clearInterval(intervaloTiempo);
+                    startBtn.textContent = "▶️ CONTINUAR";
+                    startBtn.disabled = false;
+                }
+            }
+        });
+        
+        // AJUSTAR TAMAÑO DE OBJETOS EN RESIZE
+        window.addEventListener('resize', () => {
+            // Recolocar objetos si el juego está activo
+            if (juegoActivo) {
+                const objetos = document.querySelectorAll('.magic-object');
+                objetos.forEach(obj => {
+                    const tamaño = parseInt(obj.style.width);
+                    const anchoArea = gameArea.clientWidth;
+                    const altoArea = gameArea.clientHeight;
+                    
+                    let posX = parseInt(obj.style.left);
+                    let posY = parseInt(obj.style.top);
+                    
+                    // Ajustar si está fuera de límites
+                    if (posX > anchoArea - tamaño) posX = anchoArea - tamaño;
+                    if (posY > altoArea - tamaño) posY = altoArea - tamaño;
+                    
+                    obj.style.left = `${Math.max(0, posX)}px`;
+                    obj.style.top = `${Math.max(0, posY)}px`;
+                });
+            }
+        });
+    </script>
+</body>
+</html>
